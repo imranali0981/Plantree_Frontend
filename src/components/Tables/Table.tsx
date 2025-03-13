@@ -19,11 +19,13 @@ import {
 function SkeletonRow({ columns }) {
   return (
     <tr>
-      {Array.from({ length: columns }).map((_, index) => (
-        <td key={index}>
-          <Skeleton height={20} />
-        </td>
-      ))}
+      {Array(columns)
+        .fill("")
+        .map((_, index) => (
+          <td key={index} className="p-4">
+            <div className="h-4 bg-gray-200 rounded"></div>
+          </td>
+        ))}
     </tr>
   );
 }

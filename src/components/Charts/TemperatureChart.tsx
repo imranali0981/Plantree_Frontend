@@ -27,7 +27,7 @@ ChartJS.register(
 
 const TemperatureChart = ({ data }) => {
   // Compute the start date for the last 7 days
-  const sevenDaysAgo = moment().utc().subtract(7, 'days');
+  const sevenDaysAgo = moment().utc().subtract(1, 'days');
 
   // Filter the data for the last 7 days
   const filteredData = data.filter((entry) => {
