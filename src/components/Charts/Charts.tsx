@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { useSensorData } from '@/connection/Connect';
 
 ChartJS.register(
   LineElement,
@@ -25,15 +26,10 @@ ChartJS.register(
 
 
 function Charts() {
-	const [sensorData, setSensorData] = useState([]);
-	useEffect(()=>{
-		axios.get("https://plan-tree-amber.vercel.app/sensor-data")
-		.then((response)=>{
-			// console.log(response.data);
-			setSensorData(response.data);
-		})
-		.catch((error)=>{console.log("Getting while fetching the daata from database, ",error)})
-	},[]);
+	 
+  	const { data: sensorData } = useSensorData();
+
+
 
 
   return (

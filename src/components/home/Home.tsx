@@ -6,11 +6,12 @@ import { IoHome } from "react-icons/io5";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { PiPlantBold } from "react-icons/pi";
 import { TbDeviceAnalytics } from "react-icons/tb";
-import IndividualData from "../individual/IndividualData";
 import { useSensorData } from "@/connection/Connect";
-import Report from "../Reports/Report";
 import Logo from "../../assets/Plantree/Full Logo/Svg/plantree-03.svg";
 import { useNavigate } from "react-router-dom";
+import Report from "../Reports/Report";
+import IndividualData from "../individual/IndividualData";
+import PlantSuggestion from "../PlantSuggestion/PlantSuggestion";
 
 const App: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState("Home");
@@ -26,12 +27,7 @@ const App: React.FC = () => {
   ];
 
   const handleItemClick = (itemName: string) => {
-    if (itemName === "Map") {
-      setTooltipVisible(true);
-      setTimeout(() => setTooltipVisible(false), 2000);
-    } else {
-      setActiveMenu(itemName);
-    }
+    setActiveMenu(itemName);
   };
 
   return (
@@ -57,7 +53,7 @@ const App: React.FC = () => {
                   }`}
                   style={{ whiteSpace: "nowrap" }}
                 >
-                  {item.name === "Map" && tooltipVisible ? "Coming Soon" : item.description}
+                  {item.description}
                 </span>
               </li>
             ))}
@@ -97,6 +93,7 @@ const App: React.FC = () => {
               </div>
             )}
             {activeMenu === "Individual" && <IndividualData data={sensorData} />}
+            {activeMenu === "Map" && <PlantSuggestion data={sensorData} />}
             {activeMenu === "Reports" && <Report data={sensorData} />}
           </div>
         </main>

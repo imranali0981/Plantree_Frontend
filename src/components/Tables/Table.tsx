@@ -191,6 +191,7 @@ export default function Table({ data }) {
                     <tr {...row.getRowProps()} className="hover:bg-gray-100">
                       {row.cells.map((cell) => (
                         <td
+                          key={cell.column.id}
                           {...cell.getCellProps()}
                           className="px-6 py-4 text-sm text-gray-700 border border-gray-300"
                         >
