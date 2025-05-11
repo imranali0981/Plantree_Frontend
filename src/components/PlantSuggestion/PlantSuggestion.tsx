@@ -32,6 +32,7 @@ function PlantSuggestion({data}) {
 			</div>):
 			(
 	  			<LocationMap recommendedLocation={recommendedLocation} />
+				
 			)
 		}
 	</div>
